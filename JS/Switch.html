@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+</head>
+<body>
+    
+
+
+    <script>
+     /* switch 
+     
+        switch(check_variable){
+
+           case '1' : console.log("January");
+                     break;
+           case '2' : console.log("Feb");         
+
+        }
+     
+     
+     */
+     //                     2
+     function checkMonth(month){
+ //              2
+        switch(month){
+          
+            case 1 : console.log("Jan");
+                     break;
+            case 2 : console.log("Feb"); 
+                     break; 
+            case 3 : console.log("Mar"); 
+                      break;   
+            case 4 : console.log("April"); 
+                   break;                 
+                      
+             default: console.log("INVALID MONTH");         
+
+         }
+     }
+
+       checkMonth(14);
+
+
+//                              2
+       function checkHalfyear(month){
+//                2
+
+   
+         switch(month){
+            case 1: 
+            case 2:
+            case 3: 
+            case 4: 
+            case 5: 
+            case 6 : console.log("1st half");
+                   break;    
+                   
+
+            case 7: console.log("2nd half");
+                   break;
+            case 8 : console.log("2nd half");
+                   break;
+            case 9: console.log("2nd half");
+                   break;
+            case 10 : console.log("2nd half");
+                   break; 
+
+            case 11: console.log("2nd half");
+                   break;
+            case 12 : console.log("2nd half");
+                  break;                         
+
+                             
+      
+              default: console.log("Not a Valid Month");
+        
+         }
+       }
+       checkHalfyear(1);
+
+
+    //    create a funtion which takes 2 inputs and return true if any one of them is 100,or some of 2no's is 100
+
+    function check100(a,b){
+// 30 70
+    //    if(a==100 || b==100)
+    //       return true
+    //    else if (a+b==100)
+    //      return true
+    //    el
+       return a==100 || b==100 || a+b==100
+    }
+
+  let res= check100(30,70);
+  console.log("res:",res)
+
+    </script>
+</body>
+</html>

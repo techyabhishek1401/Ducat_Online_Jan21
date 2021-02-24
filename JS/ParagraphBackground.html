@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <div class="container">
+        <h1>Paragraph</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio facere sed sunt nobis sit aliquam consectetur? Quas est officia soluta. Tenetur excepturi facere repellendus? Consequuntur obcaecati, est ducimus tenetur dolores fugit nostrum laudantium minus itaque saepe repellendus veritatis! Debitis ad dicta repellat molestias eaque ducimus at eius enim quaerat cum a, voluptatum quos sit asperiores! Amet unde praesentium reiciendis labore hic cumque vitae perferendis consequatur rerum laudantium, exercitationem dolores doloribus quod ab sed provident omnis sint quia laborum. Laborum labore ex quibusdam commodi rerum obcaecati explicabo sit architecto expedita minima voluptates modi error velit autem, sapiente dolores facere sequi vero sunt. Adipisci autem ad facilis nesciunt tempora commodi quisquam consectetur eos beatae! Omnis cupiditate voluptates accusamus officiis aperiam. Qui nostrum numquam ducimus nisi velit nihil at quidem amet officiis, aspernatur expedita totam optio, vitae delectus quis! Iure cupiditate architecto aliquid neque in? Eum placeat laudantium provident molestias, architecto unde repellendus culpa laboriosam obcaecati, dignissimos aut fuga deserunt libero cum, iure corrupti quibusdam praesentium. Consectetur doloremque veritatis a quas, cum accusantium totam fugit doloribus est perferendis! Odio sed, rem necessitatibus fugit dolor qui porro dolores eius quis at aliquam a soluta sit veritatis modi. Nobis officiis laboriosam asperiores expedita facilis. Mollitia veniam, aspernatur sequi voluptate quam voluptas consequuntur qui veritatis sapiente dolorum reiciendis repellat aut. Amet in accusamus sapiente obcaecati hic quibusdam, quis odio temporibus sint consequuntur illo dolor exercitationem laboriosam voluptatem fuga ea quam qui? Odit iure eius minus quod est quam officia nostrum dignissimos! Beatae, laboriosam reprehenderit? Non rerum cumque amet, tenetur recusandae ab sunt maxime asperiores earum sed minima voluptate, assumenda dolores molestias eligendi excepturi nihil ducimus expedita cum neque vero totam quod modi itaque! Est aspernatur quos distinctio! Et rerum voluptatem dolore corrupti veniam, ratione impedit totam iure provident est corporis quae ab. Amet accusamus rerum fugiat maxime aperiam quia, nobis nemo voluptas labore placeat ipsam, ad similique sint alias animi dolores libero. Ut adipisci maiores corporis dolore, eveniet similique voluptate quod error deserunt cum aliquam, accusantium ipsa optio sequi quam inventore. Iusto fugiat laboriosam quaerat esse distinctio ipsam expedita, ad aperiam, facilis explicabo temporibus perferendis, non culpa repellendus amet obcaecati! Libero accusantium nam, numquam itaque esse facilis quam reiciendis illo alias vero unde omnis beatae et dignissimos maxime! Esse quae vel soluta nobis inventore et vitae libero, eligendi quasi id dolorem, iure unde aspernatur officia necessitatibus dolores corrupti quisquam in labore dignissimos aliquid voluptate rerum sequi.</p>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        let paragraph=document.querySelector('p');
+      //  console.log("paragraph:",paragraph.innerText);
+
+    //   paragraph.innerHTML= paragraph.innerText.split(' ').map(function(word) {
+    //        // console.log("word:",word);
+    //     //    if(word.length>=8){
+    //     //        return `<span style="background-color:yellow">${word}</span>`
+    //     //    }
+    //     //    else return word
+    //     return word.length >=8 ? `<span style="background-color":yellow">${word}</span>`: word
+    //     }).join(' ');
+  
+    paragraph.innerHTML= paragraph.innerText.split(' ')
+    .map(word=>word.length >=8 ? `<span style="background-color:yellow">${word}</span>`: word )
+    .join(' ');
+  
+       
+           
+           
+       
+    </script>  
+</body>
+</html>

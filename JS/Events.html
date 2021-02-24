@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .bg-green {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="Abhishek">
+        <button class="test">Click Me</button>
+        <div>
+            <button>Click Me Again</button>
+        </div>
+       
+    </div>
+
+    <script>
+
+        /*
+         by id-getElementById(btn);
+         by class- getElementByClassname('click')[0]
+         by tag -getElementByTagName('button')[0]
+         by querySelector
+        */
+let btn_ref_1=document.querySelector('#Abhishek > button'); 
+console.log("btn_ref_1:",btn_ref_1)   
+   let btn_ref_2=document.querySelector('#Abhishek div button');
+   console.log("btn_ref_2:",btn_ref_2);
+    
+    
+   btn_ref_1.addEventListener('click',function(event){
+     console.log("click Event Occured");
+    })
+    
+    btn_ref_1.addEventListener('dblclick',function(event){
+     console.log("Double click Event Occured");
+    })
+
+    btn_ref_1.addEventListener('mouseover',function(event){
+     console.log("Hover Event Occured");
+     console.log("EVENT:",event.target.classList);
+    // event.target.classList.add('bg-green');
+     console.log("Class After Adding bg-green:",event.target.classList);
+
+     
+    })
+    
+    btn_ref_1.addEventListener('mouseout',function(event){
+        event.target.classList.remove("bg-green");
+     console.log("Mouse out Event Occured");
+    })
+    </script>
+</body>
+</html>

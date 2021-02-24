@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEXT/VALUE</title>
+</head>
+<body>
+    <div class="container">
+         <p>Write Something</p>
+         <input placeholder="Name"/>
+         <button>Click Me</button>
+    </div>
+
+
+<script>
+    let p_ref=document.querySelector('p');
+    let input_ref=document.querySelector("input");
+    let btn_ref=document.querySelector('button');
+
+    console.log(p_ref.innerText)
+
+
+    btn_ref.addEventListener('click',function(event){
+        p_ref.innerHTML=`<h1>${input_ref.value}</h1>`;
+                       
+      // console.log("TEXT:",input_ref.value);
+    })
+</script>
+</body>
+</html>

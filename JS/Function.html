@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Functions</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <div class="container" style="width:400px">
+        <button>Click Me</button>
+    </div>
+     
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <script>
+   console.log("Hi I'm line 25");
+   //https://randomuser.me/
+    let container_ref=document.getElementsByClassName("container")[0];
+
+   
+      function sumOfNumber (num1,num2) {
+           console.log("sum:",num1+num2);
+      }
+
+ sumOfNumber(5,9);
+ sumOfNumber(10,20);
+ sumOfNumber(30,40);
+ sumOfNumber(99,99);
+ sumOfNumber(57,99);
+
+                      
+   function EvenOdd (num1){
+   
+     if(num1%2==0)
+    // console.log("EVEN:",num1);
+    return true
+     else 
+    //  console.log("ODD:",num1);
+    return false
+
+   }
+
+   let check_99=EvenOdd(99);
+   console.log("check_99:",check_99);
+   EvenOdd(6,5); // wrong,it will take 6 as argument only
+
+   console.log("Hi I'm line 31");
+   
+     
+   if(EvenOdd(97)){
+     console.log("***HI Im Even***");
+   }else {
+    console.log("***HI Im Odd***");
+   }
+
+
+    function changeBorder (ev){
+      console.log("ev:",ev);
+      container_ref.style.border="2px solid red";
+      ev.target.style.background="green"
+    }
+
+
+   
+     let btn_ref=  document.querySelector('button');
+     btn_ref.addEventListener('click',changeBorder);
+
+    
+   </script>  
+
+
+</body>
+</html>

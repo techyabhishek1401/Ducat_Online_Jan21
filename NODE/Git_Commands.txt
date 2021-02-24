@@ -1,0 +1,8 @@
+Clone--- > git clone https_git_repo_url
+
+Pushing Changes to Repo
+git status-- > to check the status
+ git add .       // stage the Changes
+ git commit -m "your message"    //commit the Changes
+ git push   //push the chages to your Repo
+

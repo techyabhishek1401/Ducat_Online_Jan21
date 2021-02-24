@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+
+<style>
+
+.card {
+    position: relative;
+    padding: 20px 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 1px rgb(0 0 0 / 50%);
+    overflow: hidden;
+    text-align: center;
+    z-index: 5;
+}
+
+.card .user_photo {
+    position: relative;
+    background: #fff;
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    border: 1px solid rgba(0,0,0,.25);
+}
+.card #user_title {
+    color: #999;
+    font-size: 18px;
+    margin: 0;
+}
+</style>
+</head>
+<body>
+    
+
+
+    <script>
+  let fruits=["Apple","Orange","Grapes"];
+
+  console.log("fruits",fruits);
+  fruits[1]="Oranges";
+  console.log("fruits",fruits);
+
+//   add/remove element from the end
+fruits.push("chico");  //add
+console.log("fruits",fruits);
+fruits.pop();
+console.log("fruits",fruits);
+console.log("fruits size:",fruits.length);
+
+
+//add/remove element from starting
+fruits.shift();
+console.log("fruits",fruits);
+fruits.unshift("Banana");
+console.log("fruits",fruits);
+
+//**************************< string related operations>
+//converting array to string(comma seperated)
+let string_array=fruits.toString();
+console.log(string_array);
+console.log("fruits",fruits);
+
+//converting array to string(delimeter seperated)
+let string_array2=fruits.join("*"); //default argument is ','
+console.log(string_array2);
+console.log("fruits",fruits);
+
+//converting string to a array;
+console.log("string *:",string_array2);
+ console.log(string_array2.split("*"));
+ console.log("orignal:",fruits)
+
+// *************************<length>
+    console.log("Length:",fruits.length);
+
+
+//************************<Adding/Removing element from middle>
+//------splice     ArrayName.splice(startingPoint(where),no. of element to be deleted,....items to be added) 
+console.log("orignal:",fruits);
+//["Banana", "Oranges", "Grapes"]
+fruits.splice(1,1,"Chico","Guava");
+/** change the orignal array
+["Banana", "Chico", "Oranges", "Grapes"]
+fruits[1]=Chico,
+fruits[2]=Oranges
+*/   
+
+
+console.log("orignal:",fruits);
+//fruits.splice(5);
+
+console.log("fruits.splice(1,1):",fruits.splice(1,1,"Dragon Fruit","berries"));
+console.log("orignal:",fruits);
+
+// ----Arraay Reverse
+console.log("reverse:",fruits.reverse());
+console.log("orignal:",fruits);
+
+let name="Abhishek Kumar";
+
+let name_array=name.split("");
+console.log(name_array);
+name_array.reverse();
+console.log(name_array);
+console.log("Reverse :",name_array.join(""));
+
+
+let reverse_name=name.split("").reverse().join("");
+console.log("reverse_name:",reverse_name); 
+console.log("Orginal:",fruits);
+// fruits.splice(-2);
+console.log("After Slice(-2,0) Orginal:",fruits);
+
+//---- slice----
+/* 
+ArrayName.slice(starting_Index,last_index)  //last_index is not included;
+*/
+let sliced=fruits.slice(1,3); //return a new array
+console.log("sliced:",sliced);
+console.log("orignal:",fruits);
+
+
+ sliced=fruits.slice(-3,-2); //return a new array
+console.log("sliced(-3,2):",sliced);
+console.log("orignal:",fruits)
+sliced=fruits.slice(3,6);
+console.log("sliced(3,6):",sliced);
+console.log("orignal:",fruits)
+
+
+
+// ----Every----
+/*
+it will return TRUE if all the elements of array satisfy one condition
+*/
+
+let ages=[13,14,15,16,17,18];
+//         0, 1,2 ,3 ,4, 5
+console.table(ages);
+//                 18
+let isMinor=ages.every(function(age){
+   console.log("age:",age);    //13 14 15 16 19
+
+//           18<=18
+   return age<=18   //logical conditions retrn BOOLEAN  //i++
+
+})
+
+console.log("isMinorArray:",isMinor)
+/*
+    element   13    14    15   16   19    18
+    return    T      T     T   T     F     T
+    And of Return--> ( T    &&  T  &&    T  &&  T  &&    F  &&    T);
+                         T  &&    T  &&  T  &&    F  &&    T
+                            T &&  T  &&    F  &&    T
+                            T &&    F  &&    T
+                             F && T 
+                             F 
+*/
+
+
+ages=[12,13,21,32,45,18,17];
+/*
+filter -filters out the array
+return a new filtered array
+*/
+
+let minor_array=ages.filter(function(age){
+    return age<=18
+})
+
+console.log("ages:",ages)
+console.log("minor_array:",minor_array);
+
+// includes
+console.log("Include 99:",ages.includes(45));
+console.log("indexof 45:",ages.indexOf(99));
+
+/*map --It is used for itteration (for loop)
+   array_name.map(function(element,index){
+       perform any operation
+   })
+
+*/
+
+let new_ages=ages.map(function(age,index){
+    console.log("age:",age);
+    console.log("index:",index);
+    return "My Age is="+age
+})
+console.log("ages:",ages);
+console.log("new ages:",new_ages);
+
+// ----https://randomuser.me/
+// fontawseome
+</script>
+</body>
+</html>

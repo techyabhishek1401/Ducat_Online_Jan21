@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        /* 
+         write a function to find the extension of a file
+         eg:abc.html=>.html , styles.css  .css
+        */
+        function findExtension(str){
+           console.log (str.slice(str.lastIndexOf('.')));
+        }
+        findExtension("Abc.html");
+        findExtension("Styles.css");
+        findExtension("webpack.config.js");
+
+
+
+         /*  
+            Write a program to print the date in expected format 
+           mm-dd-yyyy,mm/dd/yyyy, dd-mm-yyyy , dd/mm/yyyy   
+         */
+
+         function formatDate(date=new Date()){
+             let day=date.getDate();
+             let month=date.getMonth();
+             let year=date.getFullYear();
+             return `${day}/${month}/${year}`
+         }
+         console.log(formatDate());
+      
+         /* 
+           create a new string by adding "New!" in front of the String. If the given string alredy begins with "New!" then return the orginal string
+            eg :  Dress --> New! Dress  ,New! Dress => New! Dress
+         */
+
+         function addNew(str){
+                  return str.indexOf("New!")== 0 ? str : "New! " + str;
+         }   
+         console.log(addNew("Dress"));
+         console.log(addNew("I have a New! Dress"));
+    </script>
+</body>
+</html>

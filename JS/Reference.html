@@ -1,0 +1,57 @@
+!<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+          <input type="text" id="inp-1" class="inp">
+          <input type="password" id="inp-2" class="inp">
+          <input type="text" id="inp-3" class="inp">   
+          <input type="number" id="inp-4" class="inp">
+      </div>
+      <div class="container2">
+        <input type="text" id="inp-5" class="inp">
+        <input type="password" id="inp-6" class="inp">
+        <input type="text" id="inp-7" class="inp">   
+        <input type="number" id="inp-8" class="inp">
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+   <script>
+       let some_array=[1,2,3,4,5];
+       let some_var=some_array[3];
+       console.log("some_var:",some_var);
+
+      let ref_1=document.getElementsByClassName('inp')[2]
+      let ref_2=document.getElementById('inp-3');//single element-first occurence
+      let ref_3=document.querySelector('#inp-3');
+      let ref_4=document.querySelector('.inp'); //single element-first occurence
+      let ref_5=document.querySelectorAll('.inp')[2];
+      let ref_6=document.querySelectorAll('input')[2];
+      let ref_7=document.getElementsByTagName('input')[2];
+      let ref_8=document.querySelectorAll('.container2 input')[2]
+      console.log("ref_1:",ref_1);
+      console.log("ref_2:",ref_2);
+      console.log("ref_3:",ref_3);
+      console.log("ref_4:",ref_4);
+      console.log("ref_5:",ref_5);
+      console.log("ref_6:",ref_6);
+      console.log("ref_7:",ref_7);
+      console.log("ref_8:",ref_8);
+      ref_8.style.background="red"
+
+    
+   </script>
+</body>
+</html>

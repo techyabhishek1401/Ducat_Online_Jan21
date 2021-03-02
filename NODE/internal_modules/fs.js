@@ -33,3 +33,11 @@ fs.readFile('./internal_modules/file.csv','UTF-8',(err,data)=>{
 //     if(err) console.log('error:',err)
 //     else console.log('done')
 // })
+
+
+fs.appendFile('test.txt',' appending again',(err,data)=>{
+    if(err)
+    console.log("error in writing file:",err);
+    else 
+    console.log('success');
+})

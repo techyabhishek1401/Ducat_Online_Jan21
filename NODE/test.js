@@ -22,3 +22,7 @@ console.log("PALLINDROME:", pallindrome_check);
 Write a function to highlight the words whose length is greater equal to 8
 Hey ,you are not permitted in there.
 */
+
+(function (){
+  console.log('hello from self calling function')
+})()

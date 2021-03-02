@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+let a=5;
+
+function CheckClosure(){    
+    return a
+}
+
+console.dir(CheckClosure);
+
+
+function OuterFunction(outerParamter){
+      console.log('outerParameter:',outerParamter)
+    function InnerFunction(innerParameter){
+        return outerParamter+ " "+innerParameter
+    }
+
+    return InnerFunction
+}
+var innerFn=OuterFunction('outer');
+console.dir(innerFn)
+innerFn('inner');
+console.dir(innerFn)
+// console.log('outer:',innerFn('inner'))
+
+    </script>
+</body>
+</html>

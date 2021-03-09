@@ -4,12 +4,15 @@
   "description": "this is for demonstration",
   "main": "test.js",
   "scripts": {
-    "start":"node test.js",
-    "modules":"node modules.js",
-    "create":"mkdir test_dir",
-    "clear":"rmdir test_dir",
-    "run_fs":"node ./internal_modules/fs.js"
+    "start": "node test.js",
+    "modules": "node modules.js",
+    "create": "mkdir test_dir",
+    "clear": "rmdir test_dir",
+    "run_fs": "node ./internal_modules/fs.js"
   },
   "author": "ABHISHEK",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "underscore": "^1.12.0"   
+  }
 }

@@ -17,6 +17,7 @@ body {
     width: 80px;
     height: 2px;
     border: 2px double red;
+    position: relative;
 }
 
 .ballon {
@@ -52,4 +53,7 @@ body {
 
  .miss {
      background-color: red;
+ }
+ .active {
+     background: red;
  }

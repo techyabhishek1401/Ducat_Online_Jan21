@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const fs=require('fs');
 
 const server = http.createServer((req, res) => {
   console.log('req:',req.url)
@@ -9,9 +10,12 @@ const server = http.createServer((req, res) => {
   console.log("query:",query)
  
     if(pathname === '/'){
-        res.writeHead(200,{'Content-Type':'text/plain'});
-        res.write('<h1>Welcome to nodejs</h1>');
+      fs.readFile('Home.html',(err,data)=>{
+        res.writeHead(200,{'Content-Type':'text/html'});
+        res.write(data);
         res.end();
+      })
+       
     }
     else if(pathname=== '/items'){
         {

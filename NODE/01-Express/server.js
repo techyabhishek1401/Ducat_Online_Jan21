@@ -1,7 +1,8 @@
 const express = require('express');
+const Joi = require('joi');
 
 const app=express();
-
+app.use(express.json());
 /* request methods 
  GET- for fetching the data.
  POST- for inserting the data,
@@ -17,7 +18,7 @@ const app=express();
 5- DELETE some data  -->/api/customer/id
 */
 
-let customer =[
+let customers =[
     {id:1,name:'abc'},
     {id:2,name:'def'},
     {id:3,name:'ghi'},
@@ -28,12 +29,12 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/api/customer',(req,res)=>{
-  res.send(customer)
+  res.send(customers)
 })
 
 app.get('/api/customer/:id',(req,res)=>{
 
-let cust=customer.find(cust=>cust.id==req.params.id);
+  let cust=customers.find(cust=>cust.id==req.params.id);
     if(cust) {
         res.send(cust);
     }   
@@ -43,8 +44,51 @@ let cust=customer.find(cust=>cust.id==req.params.id);
  
 })
 
+app.post('/api/customer',(req,res)=>{
+    const schema={
+        name:Joi.string().min(3).required()
+    }
+   let result= Joi.validate(req.body,schema);
+  //  const { name }=req.body  //de structuring      
+    if(result.error){
+        res.status(400).send(result.error.details[0].message);
+        return
+    }
+    let customer={
+        id:customers.length+1,
+        name:req.body.name
+    }
+    customers.push(customer);
+    res.send(customers);
+})
+
+app.put('/api/customer/:id',(req,res)=>{
+    let cust=customers.find(cust=>cust.id==req.params.id);
+    if(!cust){
+        res.status(404).send('User not found');
+    }
+    const { name }=req.body
+     const {error}=validateCustomer(req.body);
+  
+   
+    if(error){
+        res.status(400).send(error.details[0].message);
+        return
+    }
+   cust.name=name;
+   res.send(cust)
+})
+
 const PORT=process.env.PORT || 8080; 
 
 app.listen(PORT,()=>{
     console.log(`listening at ${PORT}`);
 })
+
+
+function validateCustomer(customer){
+    const schema={
+        name:Joi.string().min(3).required()
+    }
+   return Joi.validate(customer,schema);
+}

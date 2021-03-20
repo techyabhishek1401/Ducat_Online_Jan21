@@ -1,8 +1,35 @@
 const express = require('express');
-const Joi = require('joi');
-
+const morgan=require('morgan');
+require('dotenv').config()
+const logger=require('./middleware/Logger');
+const customerRouter=require('./routes/customer');
 const app=express();
+/* Template engine for dynamic html
+pug,ejs,mustache
+*/
+app.set('view engine','pug');
+app.set('views','./views');
+console.log("env variables:",app.get('env'))
 app.use(express.json());
+app.use(express.static('public'));
+
+
+app.use(logger);
+// if(app.get('env')==='development'){
+//     app.use(morgan('tiny'));
+// }
+if(process.env.ENV==='development'){
+    app.use(morgan('tiny'));
+}
+
+app.use(function(req,res,next){
+    console.log('authenticating');
+    next();
+});
+
+
+
+
 /* request methods 
  GET- for fetching the data.
  POST- for inserting the data,
@@ -18,67 +45,13 @@ app.use(express.json());
 5- DELETE some data  -->/api/customer/id
 */
 
-let customers =[
-    {id:1,name:'abc'},
-    {id:2,name:'def'},
-    {id:3,name:'ghi'},
-]
+
 
 app.get('/',(req,res)=>{
-    res.send('<h1> Welcome To Express </h1>');
+    res.render('Home',{title:'Home',message:'Welcome,you are at home'});
 });
 
-app.get('/api/customer',(req,res)=>{
-  res.send(customers)
-})
-
-app.get('/api/customer/:id',(req,res)=>{
-
-  let cust=customers.find(cust=>cust.id==req.params.id);
-    if(cust) {
-        res.send(cust);
-    }   
-   else {
-    res.status(404).send("The customer with given ID doesn't exist in our DB")  ;
-   }
- 
-})
-
-app.post('/api/customer',(req,res)=>{
-    const schema={
-        name:Joi.string().min(3).required()
-    }
-   let result= Joi.validate(req.body,schema);
-  //  const { name }=req.body  //de structuring      
-    if(result.error){
-        res.status(400).send(result.error.details[0].message);
-        return
-    }
-    let customer={
-        id:customers.length+1,
-        name:req.body.name
-    }
-    customers.push(customer);
-    res.send(customers);
-})
-
-app.put('/api/customer/:id',(req,res)=>{
-    let cust=customers.find(cust=>cust.id==req.params.id);
-    if(!cust){
-        res.status(404).send('User not found');
-    }
-    const { name }=req.body
-     const {error}=validateCustomer(req.body);
-  
-   
-    if(error){
-        res.status(400).send(error.details[0].message);
-        return
-    }
-   cust.name=name;
-   res.send(cust)
-})
-
+app.use('/api/customer',customerRouter);
 const PORT=process.env.PORT || 8080; 
 
 app.listen(PORT,()=>{
@@ -86,9 +59,3 @@ app.listen(PORT,()=>{
 })
 
 
-function validateCustomer(customer){
-    const schema={
-        name:Joi.string().min(3).required()
-    }
-   return Joi.validate(customer,schema);
-}

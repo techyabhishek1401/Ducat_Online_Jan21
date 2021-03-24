@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.js"></script>
+   
+     <script type="text/babel">
+/* Components
+1) Class Component //dynamic data (avoid);
+2) Functional Component  //(static data + dynamic);
+*/
+class Heading extends React.Component {
+       constructor(props){
+          super(props); // calling constructor of the React Classs
+       }
+       
+       render(){
+           return <h5>I'm heading </h5> 
+       }
+   }
+
+   class Welcome extends React.Component {
+       constructor(props){
+          super(props); // calling constructor of the React Classs
+       }
+
+       render(){
+           return <div class="welcome-class">
+                 <h1>Welcome to Reactjs </h1>
+                   <Heading />
+                   <Heading />
+                   
+                  </div>
+       }
+   }
+
+   ReactDOM.render(<Welcome />,document.getElementById('root'));
+// document.getElementById(root).innerHTML=`<h1>Welcome to Reactjs </h1> `
+    </script>
+</body>
+</html>

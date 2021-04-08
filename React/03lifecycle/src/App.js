@@ -6,7 +6,9 @@ export default class App extends Component {
     super(props);
     this.state={
       num:0,
-      users:[]
+      users:[],
+      recordPerPage:50,
+      currentPage:1,     
     }
     console.log("constructor");
   }
@@ -17,7 +19,7 @@ export default class App extends Component {
   }
   componentDidMount(){
     console.log("did Mount");
-    axios.get('https://randomuser.me/api/?results=50')
+    axios.get('https://randomuser.me/api/?results=500')
     .then(res=>{
       console.log("result:",res.data.results);
     this.setState({users:res.data.results})
@@ -52,9 +54,38 @@ export default class App extends Component {
     console.log("state:",state);
     console.log("getDerivedStateFromProps")
   }
+  handleClick=(event)=> {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
+  }
   render() {
     console.log("render");
-    const {users}=this.state;
+    const {users,recordPerPage,currentPage}=this.state;
+//                                1 * 50=>50
+     const indexOfLastUser = currentPage * recordPerPage;
+ //                               50-50 =>0
+     const indexOfFirstUser = indexOfLastUser - recordPerPage;
+ 
+      console.log("firstindex:",indexOfFirstUser);
+      console.log("lastindex:",indexOfLastUser);
+      const usersToShow=users.slice(indexOfFirstUser,indexOfLastUser);
+      console.log("userTOSHOW:",usersToShow)
+     const pageNumbers = [];
+          for (let i = 1; i <= Math.ceil(users.length / recordPerPage); i++) {
+      pageNumbers.push(i);
+    }
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          key={number}
+          id={number}
+         onClick={this.handleClick}
+        >
+          {number}
+        </li>
+      );
+    });
     return (
       <Container>
         
@@ -62,15 +93,15 @@ export default class App extends Component {
         <p>Number : <span style={{color:"red"}}>{this.state.num}</span></p> 
         <Button variant="outline-primary"  onClick={this.increment}>Increase By One</Button>
         
-<Row>
-  <Col>
-          {users.length>0 &&
+   <Row>
+     <Col>
+          {usersToShow.length>0 &&
                       <table border='2' className="table  table-striped">
                     <thead>
                       <tr><td>SNo.</td><td>Name</td><td>city</td><td>Picture</td></tr>
                     </thead>
                     <tbody>
-                      {this.state.users.map((user,index)=>{
+                      {usersToShow.map((user,index)=>{
                         return <tr>
                           <td>{index+1}</td>
                           <td>{`${user.name.title} ${user.name.first} ${user.name.last}`}</td>
@@ -81,8 +112,14 @@ export default class App extends Component {
                     </tbody>
                   </table>}
      </Col> 
-</Row>
-          
+     </Row>     
+     <Row>
+       <Col>
+           <ul id="pagenumber">
+            {renderPageNumbers}
+           </ul>
+       </Col>
+     </Row>
          
       </Container>
     )

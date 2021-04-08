@@ -45,7 +45,7 @@
 
 import React from 'react'
 
-export default function Table({tasks,onEdit,onDelete}) {
+export default function Table({tasks,onEdit,onDelete,headers}) {
 
 
     const handleEdit=(task)=>{

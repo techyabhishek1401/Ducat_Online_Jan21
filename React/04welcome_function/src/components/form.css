@@ -1,0 +1,20 @@
+#container {
+  border: 10px double black;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 10px 20px;
+}
+
+#pagenumber li {
+  display: inline-block;
+  width: 50px;
+  margin: 10px auto;
+  border-right: 1px solid white;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+li:hover {
+  opacity: 0.8;
+}

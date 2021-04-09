@@ -1,4 +1,4 @@
-import Table from './components/Table'
+import Table from './cmp/Table'
 import Form from './components/Form'
 function App() {
   return (

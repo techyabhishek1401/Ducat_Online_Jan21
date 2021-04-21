@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useMemo} from 'react';
+import React,{useState,useEffect,useMemo,useCallback} from 'react';
 import {Button,Dropdown,Container,Row,Col} from 'react-bootstrap';
 import axios from 'axios';
 import './form.css'
@@ -7,12 +7,12 @@ const [name, setName] = useState('');
 const [age, setAge] = useState('');
 const [department, setDepartment] = useState('');
 const [users, setUsers] = useState([]);
-const [test, setTest] = useState(true); 
+const [test, setTest] = useState([]); 
 const [currentPage, setCurrentPage] = useState(1) ;  
 const recordPerPage=50;
-useEffect(() => {
-    console.log("runs only on 1st mount")
-}, []);  // did mount (called once only on component mount)
+// useEffect(() => {
+//     console.log("runs only on 1st mount")
+// }, []);  // did mount (called once only on component mount)
 
 useEffect(() => {
     axios.get('https://randomuser.me/api/?results=500')
@@ -24,29 +24,40 @@ useEffect(() => {
     .catch(err=>{
       console.log("error:",err)
     })
-    return ()=>console.log("returning out")  // component will unmount
+     return ()=>console.log("returning out")  // component will unmount
     
-}, [test])  //did mount  //if value is passed in array-->componentDidUpdate/shouldUpdate
+}, [])  //did mount  //if value is passed in array-->componentDidUpdate/shouldUpdate
 
 
 
 const handleClick=()=>{
-    setTest(!test)
+  console.log("handelClick")
+   
     console.log("handleClick");
     let tmp={name,age,department};
-    setUsers([...users,tmp]);
-    setTimeout(()=>  console.log("newUsers:",users),30)
+    console.log("tmp:",tmp)
+    let tm=[...users];
+    tm.push(tmp)
+    setUsers(tm);
+    setTest(tm)
+    setTimeout(()=>  console.log("newUsers:",test),50)
     setName('');
     setAge('');
     setDepartment(''); 
 }
 
-  const changePage=(event)=> {
-    setCurrentPage(Number(event.target.id))
-  }
+  // const changePage=(event)=> {
+  //   console.log('name:',name)
+  //   setCurrentPage(Number(event.target.id));
+  // }
+
+  const changePage=useCallback(
+    (event) =>setCurrentPage(Number(event.target.id)),
+    [currentPage,users],
+  )
 
    const indexOfLastUser=useMemo(() =>{
-       console.log("inside indexOfLastUser");
+       console.log("inside indexOfLastUser:",currentPage * recordPerPage);
        return currentPage * recordPerPage
    } , [currentPage,recordPerPage]);
 
@@ -60,12 +71,12 @@ const handleClick=()=>{
    //    console.log("lastindex:",indexOfLastUser);
 
        const usersToShow=useMemo(() =>{ 
-        console.log('usersTOShow')       
-        users.slice(indexOfFirstUser,indexOfLastUser);
+        console.log('usersTOShow:', users.slice(indexOfFirstUser,indexOfLastUser))       
+     return   users.slice(indexOfFirstUser,indexOfLastUser);
     } , [indexOfLastUser,indexOfFirstUser])
        
       
-       console.log("userTOSHOW:",usersToShow)
+    //   console.log("userTOSHOW:",usersToShow)
       const pageNumbers = [];
            for (let i = 1; i <= Math.ceil(users.length / recordPerPage); i++) {
        pageNumbers.push(i);
@@ -100,7 +111,7 @@ const handleClick=()=>{
                     <tbody>
                       {usersToShow.map((user,index)=>{
                         return <tr key={`user-${index}`}>
-                          <td>{index+1}</td>
+                          <td>{indexOfFirstUser+index+1}</td>
                           <td>{`${user.name.title} ${user.name.first} ${user.name.last}`}</td>
                           <td>{user.location.city}</td>
                           <td><img src={user.picture.thumbnail} /></td>                 

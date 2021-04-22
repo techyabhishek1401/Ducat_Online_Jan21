@@ -1,0 +1,9 @@
+/* Schema Types
+String
+Number
+Date
+Buffer
+Boolean
+ObjectID
+Array
+*/
